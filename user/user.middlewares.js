@@ -51,11 +51,7 @@ export const verifyPassword = async (req, res, next) => {
 export const generateAuthToken = (_req, res) => {
   try {
     const { user } = res.locals;
-    console.log(
-      "inside user.middlewares.js",
-      user?.entityId,
-      process.env.JWT_SECRET
-    );
+    console.debug(user?.entityId, process.env.JWT_SECRET);
     const ONE_DAY = Math.floor(Date.now() / 1000) + 60 * 60 * 24;
     const token = jwt.sign(
       {
