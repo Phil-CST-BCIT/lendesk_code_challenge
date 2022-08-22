@@ -19,6 +19,12 @@ Before running the server, make sure you have installed:
 1. Redis
 2. Redis-Stack
 
+## Start Server
+
+```bash
+npm run dev
+```
+
 ## Usage
 
 ```curl
