@@ -6,6 +6,8 @@ import { findByName, userRepository } from "./user.model.js";
  * @param {*} res - Response object
  * @param {*} next - Next middleware
  * @returns void
+ * @Note - In production environment, we probably want to record the event
+ * when a user signs up
  */
 export const registerUser = async (req, res, next) => {
   try {
@@ -19,6 +21,7 @@ export const registerUser = async (req, res, next) => {
     }
 
     const newUser = await userRepository.createAndSave({ name, password });
+
     res.locals.user = newUser;
     next();
   } catch (err) {
@@ -32,6 +35,8 @@ export const registerUser = async (req, res, next) => {
  * @param {*} res - Response object
  * @param {*} next - Next middleware
  * @returns void
+ * @Note - In production environment, we might want to log the event somewhere
+ * when a user logs in
  */
 export const loginUser = async (req, res, next) => {
   try {
